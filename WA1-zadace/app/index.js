@@ -11,27 +11,20 @@ const korisnici = [
 ];
 
 app.get("/", (req, res) => {
-  console.log("Pozvan sam ...");
-  let putanja = path.join("public", "error.html");
+  let putanja = path.join("public", "pozdrav.html");
   let aps_putanja = path.resolve(putanja);
-  res.sendFile(aps_putanja); //slanje htmla
+  res.sendFile(aps_putanja);
 });
 
-//endpoint: /
-app.get("/", (req, res) => {
-  console.log("Pozvan sam ...");
-  res.send("pozvan sam ..."); //slanje teksta
+app.get("/about", (req, res) => {
+  let putanja = path.join("public", "about.html");
+  let aps_putanja = path.resolve(putanja);
+  res.sendFile(aps_putanja);
 });
 
-app.get("/korisnici", (req, res) => {
-  res.json(korisnici); //slanje jsona
+app.get("/users", (req, res) => {
+  res.json(korisnici);
 });
-
-/*
-app.HTTP_METODA("URL", (HTTP_REQUEST, HTTP_RESPONSE) => {
- // JS kod
-})
-  */
 
 app.listen(PORT, (error) => {
   if (error) {
